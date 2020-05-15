@@ -12,15 +12,44 @@ namespace CoffeeShop.ViewModels.Products
         public Product Product { get => _product; set => SetProperty(ref _product, value); }
 
         int _quantity;
-        public int Quantity { get => _quantity; set => SetProperty(ref _quantity, value); }
+        public int Quantity 
+        { 
+            get => _quantity; 
+            set 
+            {
+                SetProperty(ref _quantity, value);
+            } 
+        }
 
-        public ICommand QuantityIncreaseCommand => new Command(IncreaseQuantity);
-        public ICommand QuantityDecreaseCommand => new Command(DecreaseQuantity, () => Quantity > 0);
-        public ICommand AddToBasketCommand => new Command(AddToBasket, () => Quantity > 0);
+        public ICommand QuantityIncreaseCommand { private set; get; }
+        public ICommand QuantityDecreaseCommand { private set; get; }
+        public ICommand AddToBasketCommand { private set; get; }
 
         public ProductSelectViewModel()
         {
             Quantity = 1;
+            QuantityDecreaseCommand = new Command(() =>
+            {
+                DecreaseQuantity();
+                RefreshCanExecute();
+            },
+            () =>
+            {
+               return CanOperate();
+            });
+            QuantityIncreaseCommand = new Command(()=>
+            {
+                IncreaseQuantity();
+                RefreshCanExecute();
+            });
+            AddToBasketCommand = new Command(() =>
+            {
+                AddToBasket();
+                RefreshCanExecute();
+            }, () =>
+            {
+                return CanOperate();
+            });
         }
         public ProductSelectViewModel(Product bag) : this()
         {
@@ -39,12 +68,16 @@ namespace CoffeeShop.ViewModels.Products
         private void AddToBasket()
         {
             BasketService.AddToBasket(Product.Id, Quantity);
+            MessagingCenter.Send<ProductSelectViewModel, int>(this, "AddItemToBasket", Quantity);
         }
-
+        private bool CanOperate()
+        {
+            return Quantity > 0;
+        }
         private void RefreshCanExecute()
         {
-            (QuantityDecreaseCommand as Command).ChangeCanExecute();
-            (AddToBasketCommand as Command).ChangeCanExecute();
+            ((Command)QuantityDecreaseCommand).ChangeCanExecute();
+            ((Command)AddToBasketCommand).ChangeCanExecute();
         }
     }
 }

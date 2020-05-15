@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using CoffeeShop.ViewModels.Products;
 using MvvmHelpers;
 using System.Linq;
+using Xamarin.Forms;
 
 namespace CoffeeShop.ViewModels
 {
@@ -15,9 +16,16 @@ namespace CoffeeShop.ViewModels
             set => SetProperty(ref _products, value);
         }
 
+        private int _basketItemCount;
+        public int BasketItemCount { get => _basketItemCount; set => SetProperty(ref _basketItemCount, value); }
+
         public ProductOverviewViewModel()
         {
             InitProductList();
+            MessagingCenter.Subscribe<ProductSelectViewModel, int>(this, "AddItemToBasket", (sender, arg) =>
+              {
+                  BasketItemCount += arg;
+              });
         }
 
         private async void InitProductList()
@@ -26,7 +34,7 @@ namespace CoffeeShop.ViewModels
 
             var allProducts = (await ProductRepository
                 .GetProductsAsync())
-                .Select(p=> new ProductSelectViewModel(p));
+                .Select(p => new ProductSelectViewModel(p));
 
             Products = new ObservableCollection<ProductSelectViewModel>(allProducts);
 

@@ -35,6 +35,7 @@
             <Setter Property="TextColor" Value="{StaticResource CGreen}" />
             <Setter Property="FontFamily" Value="JosefineSans-Bold" />
             <Setter Property="FontSize" Value="20" />
+            <Setter Property="BackgroundColor" Value="{StaticResource CBeige}" />
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -42,7 +43,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="120" />
                 <RowDefinition Height="*" />
-                <RowDefinition Height="48" />
+                <RowDefinition Height="52" />
                 <RowDefinition Height="100" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -52,52 +53,73 @@
             <Label Text="All Products" Margin="32,0,0,0"
                    FontFamily="JosefinSans-Bold" FontSize="32"
                    VerticalOptions="Center" TextColor="#FFFFFF"/>
-            <Button Grid.Column="1" Margin="0,0,32,0"
-                    FontFamily="IcoMoonFont" Text="{Static icoMoon:IcoMoonFont.ShoppingBasket}" FontSize="26"
+            <Button Grid.Column="1" Margin="0,0,32,0" Padding="0"
+                    FontFamily="IcoMoonFont" Text="{Static icoMoon:IcoMoonFont.ShoppingBasket}" FontSize="38"
                     TextColor="{StaticResource CGreen}"
                     BackgroundColor="#FFFFFF" VerticalOptions="Center" HeightRequest="56" WidthRequest="56" CornerRadius="12" />
+            <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="{StaticResource CGreen}"
+                   VerticalOptions="Start" HorizontalOptions="End"
+                   Margin="0,38,34,0" Padding="0"
+                   HeightRequest="24" WidthRequest="24" CornerRadius="12">
+                <Label HorizontalOptions="Center"
+                       FontFamily="JosefinSans-Regular" FontSize="16" 
+                       TextColor="#FFFFFF" Text="{Binding BasketItemCount}" />
+            </Frame>
 
-            <CarouselView Grid.Row="1" Grid.ColumnSpan="2" PeekAreaInsets="32,0,96,0" ItemsSource="{Binding Products}" HorizontalScrollBarVisibility="Never">
+            <CarouselView Grid.Row="1" Grid.ColumnSpan="2" PeekAreaInsets="32,0,96,0" 
+                          ItemsSource="{Binding Products}" HorizontalScrollBarVisibility="Never">
                 <CarouselView.ItemsLayout>
                     <LinearItemsLayout Orientation="Horizontal" ItemSpacing="24" />
                 </CarouselView.ItemsLayout>
                 <CarouselView.ItemTemplate>
                     <DataTemplate>
-                        <Frame CornerRadius="20" BackgroundColor="#FFFFFF" HasShadow="False">
+                        <Frame CornerRadius="20" BackgroundColor="#FFFFFF" HasShadow="False" Padding="0">
                             <Grid>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="4*" />
-                                    <RowDefinition Height="*" />
-                                    <RowDefinition Height="*" />
-                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="5*" />
+                                    <RowDefinition Height="3*" />
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <Image Grid.ColumnSpan="2" Source="{Binding Product.Image}" />
-                                <Label Grid.Row="1" Grid.ColumnSpan="2" VerticalOptions="Center"
+                                <Image Source="{Binding Product.Image}" BackgroundColor="Gray" />
+                                <Grid Grid.Row="1" Padding="25" RowSpacing="25">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Row="0" Grid.ColumnSpan="2" VerticalOptions="Center" VerticalTextAlignment="Center"
                                       FontFamily="JosefinSans-Bold" FontSize="26"
                                       Text="{Binding Product.Title}" TextColor="{StaticResource CGreen}" />
-                                <Label Grid.Row="2" Grid.Column="0" VerticalOptions="Center"
+                                    <Label Grid.Row="1" Grid.Column="0" VerticalOptions="Center"
                                       FontFamily="JosefinSans-Bold" FontSize="28" TextColor="{StaticResource CGreen}"
                                       Text="{Binding Product.Price, StringFormat='{0:C}'}" />
-                                <Frame Grid.Row="2" Grid.Column="1" CornerRadius="8"
+                                    <Frame Grid.Row="1" Grid.Column="1" CornerRadius="8"
                                        VerticalOptions="Center" Padding="0"
                                        BackgroundColor="{StaticResource CBeige}" HasShadow="False">
-                                    <Grid >
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-                                        <Button Style="{StaticResource StepperButton}" Text="-" Command="{Binding QuantityDecreaseCommand}"/>
-                                        <Label TextColor="{StaticResource CGreen}" FontFamily="JosefinSans-Regular"
+                                        <Grid >
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Button Style="{StaticResource StepperButton}" Text="-" Command="{Binding QuantityDecreaseCommand}"/>
+                                            <Label TextColor="{StaticResource CGreen}" FontFamily="JosefinSans-Regular"
                                                VerticalOptions="Center" HorizontalOptions="Center" FontSize="24"
                                                Grid.Column="1" Text="{Binding Quantity}" />
-                                        <Button Style="{StaticResource StepperButton}" Grid.Column="2" Text="+" Command="{Binding QuantityIncreaseCommand}" />
-                                    </Grid>
-                                </Frame>
+                                            <Button Style="{StaticResource StepperButton}" Grid.Column="2" Text="+" Command="{Binding QuantityIncreaseCommand}" />
+                                        </Grid>
+                                    </Frame>
+                                    <Button Grid.Row="2" Grid.ColumnSpan="2" CornerRadius="8" BackgroundColor="{StaticResource CBrown}"
+                                        FontFamily="JosefinSans-Regular" Text="Add To Cart" TextColor="#FFFFFF" FontSize="20" 
+                                        Command="{Binding AddToBasketCommand}" />
+                                </Grid>
+                                
                             </Grid>
                         </Frame>
                     </DataTemplate>

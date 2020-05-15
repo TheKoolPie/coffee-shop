@@ -20,5 +20,12 @@ namespace CoffeeShop.Models
                 return Products.Keys.FirstOrDefault(p => p.Id.Equals(ProductId));
             }
         }
+        public int ItemCount
+        {
+            get
+            {
+                return Products.Values.Aggregate((sum, next) => sum += next);
+            }
+        }
     }
 }
