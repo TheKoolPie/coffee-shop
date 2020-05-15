@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="CoffeeShop.Views.ProductOverviewView"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="True"
+    xmlns:icoMoon="clr-namespace:CoffeeShop.FontHelper"
+    xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+    BackgroundColor="{StaticResource CGreen}"
+    xmlns:viewModels="clr-namespace:CoffeeShop.ViewModels"
+    xmlns:effects="clr-namespace:CoffeeShop.Effects">
+    <ContentPage.BindingContext>
+        <viewModels:ProductOverviewViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <Style TargetType="Button" x:Key="BottomBtn">
+            <Setter Property="BackgroundColor" Value="#FFFFFF" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="FontFamily" Value="IcoMoonFont" />
+            <Setter Property="TextColor" Value="{StaticResource CGreen}" />
+            <Setter Property="IsVisible" Value="True" />
+        </Style>
+        <Style TargetType="Button" BasedOn="{StaticResource BottomBtn}" x:Key="SmallBottomBtn">
+            <Setter Property="HeightRequest" Value="52" />
+            <Setter Property="WidthRequest" Value="52" />
+            <Setter Property="FontSize" Value="28" />
+            <Setter Property="CornerRadius" Value="26" />
+        </Style>
+        <Style TargetType="Button" BasedOn="{StaticResource BottomBtn}" x:Key="BigBottomBtn">
+            <Setter Property="FontSize" Value="32" />
+        </Style>
+        <Style TargetType="Button" x:Key="StepperButton">
+            <Setter Property="BackgroundColor" Value="{StaticResource CBeige}"/>
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="TextColor" Value="{StaticResource CGreen}" />
+            <Setter Property="FontFamily" Value="JosefineSans-Bold" />
+            <Setter Property="FontSize" Value="24" />
+            <Setter Property="VerticalOptions" Value="Center" />
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="120" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="48" />
+                <RowDefinition Height="100" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="88"/>
+            </Grid.ColumnDefinitions>
+            <Label Text="All Products" Margin="32,0,0,0"
+                   FontFamily="JosefinSans-Bold" FontSize="32"
+                   VerticalOptions="Center" TextColor="#FFFFFF"/>
+            <Button Grid.Column="1" Margin="0,0,32,0"
+                    FontFamily="IcoMoonFont" Text="{Static icoMoon:IcoMoonFont.ShoppingBasket}" FontSize="26"
+                    TextColor="{StaticResource CGreen}"
+                    BackgroundColor="#FFFFFF" VerticalOptions="Center" HeightRequest="56" WidthRequest="56" CornerRadius="12" />
+
+            <CarouselView Grid.Row="1" Grid.ColumnSpan="2" PeekAreaInsets="32,0,96,0" ItemsSource="{Binding Products}" HorizontalScrollBarVisibility="Never">
+                <CarouselView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal" ItemSpacing="24" />
+                </CarouselView.ItemsLayout>
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame CornerRadius="20" BackgroundColor="#FFFFFF" HasShadow="False">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="4*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.ColumnSpan="2" Source="{Binding Product.Image}" />
+                                <Label Grid.Row="1" Grid.ColumnSpan="2" VerticalOptions="Center"
+                                      FontFamily="JosefinSans-Bold" FontSize="26"
+                                      Text="{Binding Product.Title}" TextColor="{StaticResource CGreen}" />
+                                <Label Grid.Row="2" Grid.Column="0" VerticalOptions="Center"
+                                      FontFamily="JosefinSans-Bold" FontSize="28" TextColor="{StaticResource CGreen}"
+                                      Text="{Binding Product.Price, StringFormat='{0:C}'}" />
+                                <Frame Grid.Row="2" Grid.Column="1" CornerRadius="8"
+                                       VerticalOptions="Center" Padding="0"
+                                       BackgroundColor="{StaticResource CBeige}" HasShadow="False">
+                                    <Grid >
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Button Style="{StaticResource StepperButton}" Grid.Row="0" Text="-"/>
+                                    </Grid>
+                                </Frame>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+
+            <Label Grid.Row="2" LineHeight="1.4" HorizontalTextAlignment="Center" TextColor="#FFFFFF" VerticalOptions="CenterAndExpand" Grid.ColumnSpan="2" FontFamily="JosefinSans-Regular" FontSize="14">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Use your voucher code &amp; Get 25% off now. Follow us on Instagram &amp; " />
+                        <Span Text="Get your offer voucher code from here !!!" TextDecorations="Underline" TextColor="#000000"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Grid Grid.Row="3" Grid.ColumnSpan="2" BackgroundColor="#FFFFFF">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.Effects>
+                    <effects:iOSSafeAreaInsetEffect />
+                </Grid.Effects>
+                <skia:SKCanvasView x:Name="canvasView" Grid.Column="0" Grid.ColumnSpan="3"
+                                    PaintSurface="SKCanvasView_PaintSurface">
+                </skia:SKCanvasView>
+                <Button Style="{StaticResource SmallBottomBtn}"
+                        Text="{Static icoMoon:IcoMoonFont.CoffeeBeans}"/>
+                <Frame Padding="0" Grid.Column="1"
+                       WidthRequest="72" HeightRequest="72" CornerRadius="30"
+                       VerticalOptions="Center" HorizontalOptions="Center">
+                    <Button Style="{StaticResource BigBottomBtn}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                            Text="{Static icoMoon:IcoMoonFont.ShoppingBagSale}" />
+                </Frame>
+                <Button Style="{StaticResource SmallBottomBtn}"
+                        Grid.Column="2" Text="{Static icoMoon:IcoMoonFont.CoffeeCup}" />
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
