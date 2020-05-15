@@ -14,9 +14,9 @@ namespace CoffeeShop.ViewModels.Products
         int _quantity;
         public int Quantity { get => _quantity; set => SetProperty(ref _quantity, value); }
 
-        public ICommand QuantityIncreasedCommand => new Command(IncreaseQuantity);
-        public ICommand QuantityDecreaseCommand => new Command(DecreaseQuantity, CanDecreaseQuantityOrAddToBasket);
-        public ICommand AddToBasketCommand => new Command(AddToBasket,CanDecreaseQuantityOrAddToBasket);
+        public ICommand QuantityIncreaseCommand => new Command(IncreaseQuantity);
+        public ICommand QuantityDecreaseCommand => new Command(DecreaseQuantity, () => Quantity > 0);
+        public ICommand AddToBasketCommand => new Command(AddToBasket, () => Quantity > 0);
 
         public ProductSelectViewModel()
         {
@@ -30,12 +30,10 @@ namespace CoffeeShop.ViewModels.Products
         private void IncreaseQuantity()
         {
             Quantity++;
-            RefreshCanExecute();
         }
         private void DecreaseQuantity()
         {
             Quantity--;
-            RefreshCanExecute();
         }
 
         private void AddToBasket()
@@ -47,10 +45,6 @@ namespace CoffeeShop.ViewModels.Products
         {
             (QuantityDecreaseCommand as Command).ChangeCanExecute();
             (AddToBasketCommand as Command).ChangeCanExecute();
-        }
-        private bool CanDecreaseQuantityOrAddToBasket()
-        {
-            return Quantity > 0;
         }
     }
 }
