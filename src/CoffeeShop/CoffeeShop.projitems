@@ -18,6 +18,14 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Fonts\icomoon.ttf" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\ProductDetailView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)CustomViews\Stepper.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
@@ -43,6 +51,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)Services\Products\IProductRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\Products\ProductRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Base\CoffeeShopBaseViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\ProductDetailView.xaml.cs">
+      <DependentUpon>ProductDetailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)CustomViews\Stepper.xaml.cs">
+      <DependentUpon>Stepper.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Fonts\" />
@@ -57,5 +71,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)Data\" />
     <Folder Include="$(MSBuildThisFileDirectory)Services\Products\" />
     <Folder Include="$(MSBuildThisFileDirectory)ViewModels\Base\" />
+    <Folder Include="$(MSBuildThisFileDirectory)CustomViews\" />
   </ItemGroup>
 </Project>

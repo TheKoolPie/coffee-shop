@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CoffeeShop.CustomViews.Stepper">
+    <ContentView.Resources>
+       <Style TargetType="Button" x:Key="StepperButton">
+            <Setter Property="TextColor" Value="{StaticResource CGreen}" />
+            <Setter Property="FontFamily" Value="JosefineSans-Bold" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="BackgroundColor" Value="{StaticResource CBeige}" />
+        </Style>
+    </ContentView.Resources>
+    <ContentView.Content>
+         <Frame CornerRadius="8"
+            VerticalOptions="Center" Padding="0"
+            BackgroundColor="{StaticResource CBeige}" HasShadow="False">
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Style="{StaticResource StepperButton}" Text="-" Command="{Binding QuantityDecreaseCommand}"/>
+                <Label TextColor="{StaticResource CGreen}" FontFamily="JosefinSans-Regular"
+                    VerticalOptions="Center" HorizontalOptions="Center" FontSize="24"
+                    Grid.Column="1" Text="{Binding Quantity}" />
+                <Button Style="{StaticResource StepperButton}" Grid.Column="2" Text="+" Command="{Binding QuantityIncreaseCommand}" />
+            </Grid>
+        </Frame>
+    </ContentView.Content>
+</ContentView>
