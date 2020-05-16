@@ -20,7 +20,7 @@
                 </Grid.ColumnDefinitions>
                 <Button Style="{StaticResource StepperButton}" Text="-" Command="{Binding QuantityDecreaseCommand}"/>
                 <Label TextColor="{StaticResource CGreen}" FontFamily="JosefinSans-Regular"
-                    VerticalOptions="Center" HorizontalOptions="Center" FontSize="24"
+                       FontSize="24" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
                     Grid.Column="1" Text="{Binding Quantity}" />
                 <Button Style="{StaticResource StepperButton}" Grid.Column="2" Text="+" Command="{Binding QuantityIncreaseCommand}" />
             </Grid>

@@ -1,5 +1,51 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CoffeeShop.Views.ProductDetailView">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CoffeeShop.Views.ProductDetailView"
+             xmlns:customViews="clr-namespace:CoffeeShop.CustomViews"
+             BackgroundColor="{StaticResource CGreen}">
     <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*" />
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Button Grid.Row="0" Grid.Column="0" BackgroundColor="{StaticResource CWhite}"
+                    Margin="36,36,0,0"
+                HeightRequest="56" WidthRequest="56" VerticalOptions="Start" HorizontalOptions="Start"/>
+            <Grid Grid.Row="1" BackgroundColor="{StaticResource CWhite}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Label Text="Broadcast Coffee" TextColor="{StaticResource CGreen}"
+                       Grid.Row="0" Margin="36,0,0,0"
+                       FontFamily="JosefinSans-Bold" FontSize="32"/>
+                <Label Text="The name of the company is based on the movie"
+                       Margin="36,0,0,0"
+                       Grid.Row="1" TextColor="{StaticResource CBeige}"
+                       FontFamily="JosefinSans-Regular" FontSize="16"/>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                <Label Text="$104" FontFamily="JosefinSans-Bold" FontSize="38"
+                       Margin="36,0" VerticalOptions="Center"
+                       TextColor="{StaticResource CGreen}" />
+                 <customViews:Stepper Grid.Column="1" Margin="0,0,36,0"/>
+                </Grid>
+                <ScrollView Grid.Row="3" Margin="36,0">
+                    <StackLayout>
+                        <Label LineHeight="1.3" Text="Humanity runs on coffee but even a bad cup of coffee is better than no coffee at all. What goes best with an cup of coffee another cup. The most dangerous drinks game is seeing how long I can go without coffee."
+                               FontFamily="JosefinSans-Regular"/>
+                    </StackLayout>
+                </ScrollView>
+            </Grid>
+        </Grid>
+
     </ContentPage.Content>
 </ContentPage>
