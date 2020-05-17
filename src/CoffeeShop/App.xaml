@@ -5,23 +5,5 @@
         <Color x:Key="CBrown">#a1766f</Color>
         <Color x:Key="CBeige">#efdbba</Color>
         <Color x:Key="CWhite">#FFFFFF</Color>
-
-        <Style TargetType="Button" x:Key="BottomBtn">
-            <Setter Property="BackgroundColor" Value="{StaticResource CWhite}" />
-            <Setter Property="VerticalOptions" Value="Center" />
-            <Setter Property="HorizontalOptions" Value="Center" />
-            <Setter Property="FontFamily" Value="IcoMoonFont" />
-            <Setter Property="TextColor" Value="{StaticResource CGreen}" />
-            <Setter Property="IsVisible" Value="True" />
-        </Style>
-        <Style TargetType="Button" BasedOn="{StaticResource BottomBtn}" x:Key="SmallBottomBtn">
-            <Setter Property="HeightRequest" Value="52" />
-            <Setter Property="WidthRequest" Value="52" />
-            <Setter Property="FontSize" Value="28" />
-            <Setter Property="CornerRadius" Value="26" />
-        </Style>
-        <Style TargetType="Button" BasedOn="{StaticResource BottomBtn}" x:Key="BigBottomBtn">
-            <Setter Property="FontSize" Value="32" />
-        </Style>
     </Application.Resources>
 </Application>

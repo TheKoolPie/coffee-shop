@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+             xmlns:effects="clr-namespace:CoffeeShop.Effects"
+             x:Class="CoffeeShop.CustomViews.BottomControl">
+    <ContentView.Resources>
+        <Style TargetType="Button" x:Key="BottomBtn">
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="FontFamily" Value="IcoMoonFont" />
+            <Setter Property="IsVisible" Value="True" />
+        </Style>
+        <Style TargetType="Button" BasedOn="{StaticResource BottomBtn}" x:Key="SmallBottomBtn">
+            <Setter Property="HeightRequest" Value="52" />
+            <Setter Property="WidthRequest" Value="52" />
+            <Setter Property="FontSize" Value="28" />
+            <Setter Property="CornerRadius" Value="26" />
+        </Style>
+        <Style TargetType="Button" BasedOn="{StaticResource BottomBtn}" x:Key="BigBottomBtn">
+            <Setter Property="FontSize" Value="32" />
+        </Style>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.Effects>
+                <effects:iOSSafeAreaInsetEffect />
+            </Grid.Effects>
+            <skia:SKCanvasView x:Name="canvasView" Grid.Column="0" Grid.ColumnSpan="3"
+                                    PaintSurface="SKCanvasView_PaintSurface">
+            </skia:SKCanvasView>
+            <Button Style="{DynamicResource SmallBottomBtn}"
+                    Text="{Binding LeftBtnIconText}"
+                    TextColor="{Binding LeftBtnTextColor}"
+                    BackgroundColor="{Binding LeftBtnBackgroundColor}"/>
+            <Frame Padding="0" Grid.Column="1"
+                   WidthRequest="72" HeightRequest="72" CornerRadius="30"
+                   VerticalOptions="Center" HorizontalOptions="Center">
+                <Button Style="{DynamicResource BigBottomBtn}" 
+                        HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                        BackgroundColor="{Binding CenterBtnBackgroundColor}"
+                        TextColor="{Binding CenterBtnTextColor}"
+                        Text="{Binding CenterBtnIconText}" />
+            </Frame>
+            <Button Style="{DynamicResource SmallBottomBtn}"
+                    TextColor="{Binding RightBtnTextColor}"
+                    BackgroundColor="{Binding RightBtnBackgroundColor}"
+                    Grid.Column="2" Text="{Binding RightBtnIconText}" />
+        </Grid>
+    </ContentView.Content>
+</ContentView>

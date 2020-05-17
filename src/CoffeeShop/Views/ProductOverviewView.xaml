@@ -99,29 +99,10 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
-            <Grid Grid.Row="3" Grid.ColumnSpan="2" BackgroundColor="{StaticResource CWhite}">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Grid.Effects>
-                    <effects:iOSSafeAreaInsetEffect />
-                </Grid.Effects>
-                <skia:SKCanvasView x:Name="canvasView" Grid.Column="0" Grid.ColumnSpan="3"
-                                    PaintSurface="SKCanvasView_PaintSurface">
-                </skia:SKCanvasView>
-                <Button Style="{StaticResource SmallBottomBtn}"
-                        Text="{Static icoMoon:IcoMoonFont.CoffeeBeans}"/>
-                <Frame Padding="0" Grid.Column="1"
-                       WidthRequest="72" HeightRequest="72" CornerRadius="30"
-                       VerticalOptions="Center" HorizontalOptions="Center">
-                    <Button Style="{StaticResource BigBottomBtn}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
-                            Text="{Static icoMoon:IcoMoonFont.ShoppingBagSale}" />
-                </Frame>
-                <Button Style="{StaticResource SmallBottomBtn}"
-                        Grid.Column="2" Text="{Static icoMoon:IcoMoonFont.CoffeeCup}" />
-            </Grid>
+            <customViews:BottomControl Grid.Row="3" Grid.ColumnSpan="2" BackgroundColor="{StaticResource CWhite}" ArcColor="{StaticResource CGreen}"
+                                       LeftBtnBackgroundColor="{StaticResource CWhite}" LeftBtnTextColor="{StaticResource CGreen}" LeftBtnIconText="{Static icoMoon:IcoMoonFont.CoffeeBeans}"
+                                       CenterBtnBackgroundColor="{StaticResource CWhite}" CenterBtnTextColor="{StaticResource CGreen}" CenterBtnIconText="{Static icoMoon:IcoMoonFont.ShoppingBagSale}"
+                                       RightBtnBackgroundColor="{StaticResource CWhite}" RightBtnTextColor="{StaticResource CGreen}" RightBtnIconText="{Static icoMoon:IcoMoonFont.CoffeeCup}" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>
