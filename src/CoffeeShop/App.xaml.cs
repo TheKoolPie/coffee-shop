@@ -1,5 +1,5 @@
-﻿using System;
-using CoffeeShop.Views;
+﻿using CoffeeShop.Views;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,7 +11,7 @@ namespace CoffeeShop
         {
             InitializeComponent();
 
-            MainPage = new ProductDetailView();
+            MainPage = new ProductOverviewView();
         }
 
         protected override void OnStart()

@@ -9,7 +9,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="4*" />
                 <RowDefinition Height="2*" />
-                <RowDefinition Height="*" />
+                <RowDefinition Height="100" />
             </Grid.RowDefinitions>
             <Button Grid.Row="0" Grid.Column="0" BackgroundColor="{StaticResource CWhite}"
                     Margin="36,36,0,0"
