@@ -9,7 +9,7 @@
     <ContentPage.Content>
         <Grid RowSpacing="0.2">
             <Grid.RowDefinitions>
-                <RowDefinition Height="4*" />
+                <RowDefinition Height="3*" />
                 <RowDefinition Height="2*" />
                 <RowDefinition Height="100" />
             </Grid.RowDefinitions>
@@ -17,7 +17,7 @@
                 
             </pan:PancakeView>
             <Button Grid.Row="0" BackgroundColor="{StaticResource CWhite}"
-                    Margin="36,36,0,0" CornerRadius="10" FontSize="28" Padding="10,0,0,0"
+                    Margin="32,48,0,0" CornerRadius="10" FontSize="28" Padding="10,0,0,0"
                     Text="{Static icoMoon:IcoMoonFont.ArrowBack}" 
                     FontFamily="IcoMoonFont" TextColor="{StaticResource CGreen}"
                 HeightRequest="56" WidthRequest="56" VerticalOptions="Start" HorizontalOptions="Start"/>
@@ -26,11 +26,11 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="2*" />
                 </Grid.RowDefinitions>
                 <Label Text="Broadcast Coffee" TextColor="{StaticResource CGreen}"
                        Grid.Row="0" Margin="36,0,0,0"
-                       FontFamily="JosefinSans-Bold" FontSize="32"/>
+                       FontFamily="JosefinSans-Bold" FontSize="32" LineHeight="1.5"/>
                 <Label Text="The name of the company is based on the movie"
                        Margin="36,0,0,0"
                        Grid.Row="1" TextColor="{StaticResource CBeige}"
@@ -48,7 +48,7 @@
                 <ScrollView Grid.Row="3" Margin="36,0">
                     <StackLayout>
                         <Label LineHeight="1.5" Text="Humanity runs on coffee but even a bad cup of coffee is better than no coffee at all. What goes best with an cup of coffee another cup. The most dangerous drinks game is seeing how long I can go without coffee."
-                               FontFamily="JosefinSans-Regular" FontSize="16"/>
+                               FontFamily="JosefinSans-Regular" FontSize="16" TextColor="Black"/>
                     </StackLayout>
                 </ScrollView>
             </Grid>

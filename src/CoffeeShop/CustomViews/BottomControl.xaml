@@ -31,9 +31,6 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Grid.Effects>
-                <effects:iOSSafeAreaInsetEffect />
-            </Grid.Effects>
             <skia:SKCanvasView x:Name="canvasView" Grid.Column="0" Grid.ColumnSpan="3"
                                     PaintSurface="SKCanvasView_PaintSurface">
             </skia:SKCanvasView>

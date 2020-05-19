@@ -60,7 +60,7 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Image Source="{Binding Product.Image}" />
-                                <Grid Grid.Row="1" Padding="25" RowSpacing="25">
+                                <Grid Grid.Row="1" Padding="25" RowSpacing="20">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="*" />
                                         <RowDefinition Height="*" />
@@ -71,13 +71,13 @@
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Row="0" Grid.ColumnSpan="2" VerticalOptions="Center" VerticalTextAlignment="Center"
-                                      FontFamily="JosefinSans-Bold" FontSize="26"
+                                      FontFamily="JosefinSans-Bold" FontSize="26" LineHeight="1.3"
                                       Text="{Binding Product.Title}" TextColor="{StaticResource CGreen}" />
                                     <Label Grid.Row="1" Grid.Column="0" VerticalOptions="Center"
                                       FontFamily="JosefinSans-Bold" FontSize="28" TextColor="{StaticResource CGreen}"
                                       Text="{Binding Product.Price, StringFormat='{0:C}'}" />
                                     <customViews:Stepper Grid.Row="1" Grid.Column="1"
-                                                         Quantity="{Binding Quantity}"
+                                                         Quantity="{Binding Quantity}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
                                                          QuantityIncreaseCommand="{Binding QuantityIncreaseCommand}"
                                                          QuantityDecreaseCommand="{Binding QuantityDecreaseCommand}" />
                                     <Button Grid.Row="2" Grid.ColumnSpan="2" CornerRadius="8" BackgroundColor="{StaticResource CBrown}"
@@ -102,7 +102,11 @@
             <customViews:BottomControl Grid.Row="3" Grid.ColumnSpan="2" BackgroundColor="{StaticResource CWhite}" ArcColor="{StaticResource CGreen}"
                                        LeftBtnBackgroundColor="{StaticResource CWhite}" LeftBtnTextColor="{StaticResource CGreen}" LeftBtnIconText="{Static icoMoon:IcoMoonFont.CoffeeBeans}"
                                        CenterBtnBackgroundColor="{StaticResource CWhite}" CenterBtnTextColor="{StaticResource CGreen}" CenterBtnIconText="{Static icoMoon:IcoMoonFont.Sale}"
-                                       RightBtnBackgroundColor="{StaticResource CWhite}" RightBtnTextColor="{StaticResource CGreen}" RightBtnIconText="{Static icoMoon:IcoMoonFont.CoffeeCup}" />
+                                       RightBtnBackgroundColor="{StaticResource CWhite}" RightBtnTextColor="{StaticResource CGreen}" RightBtnIconText="{Static icoMoon:IcoMoonFont.CoffeeCup}">
+                <customViews:BottomControl.Effects>
+                    <effects:iOSSafeAreaInsetEffect />
+                </customViews:BottomControl.Effects>
+            </customViews:BottomControl>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
