@@ -3,18 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CoffeeShop.Views.ProductDetailView"
              xmlns:customViews="clr-namespace:CoffeeShop.CustomViews"
-             BackgroundColor="{StaticResource CGreen}">
+             xmlns:icoMoon="clr-namespace:CoffeeShop.FontHelper"
+             xmlns:pan="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             BackgroundColor="{StaticResource CWhite}">
     <ContentPage.Content>
-        <Grid>
+        <Grid RowSpacing="0.2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="4*" />
                 <RowDefinition Height="2*" />
                 <RowDefinition Height="100" />
             </Grid.RowDefinitions>
-            <Button Grid.Row="0" Grid.Column="0" BackgroundColor="{StaticResource CWhite}"
-                    Margin="36,36,0,0"
+            <pan:PancakeView Grid.Row="0" CornerRadius="0,0,40,40" BackgroundColor="{StaticResource CGreen}">
+                
+            </pan:PancakeView>
+            <Button Grid.Row="0" BackgroundColor="{StaticResource CWhite}"
+                    Margin="36,36,0,0" CornerRadius="10" FontSize="28" Padding="10,0,0,0"
+                    Text="{Static icoMoon:IcoMoonFont.ArrowBack}" 
+                    FontFamily="IcoMoonFont" TextColor="{StaticResource CGreen}"
                 HeightRequest="56" WidthRequest="56" VerticalOptions="Start" HorizontalOptions="Start"/>
-            <Grid Grid.Row="1" BackgroundColor="{StaticResource CWhite}">
+            <Grid Grid.Row="1" RowSpacing="1.2" Margin="0,10,0,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
@@ -40,11 +47,15 @@
                 </Grid>
                 <ScrollView Grid.Row="3" Margin="36,0">
                     <StackLayout>
-                        <Label LineHeight="1.3" Text="Humanity runs on coffee but even a bad cup of coffee is better than no coffee at all. What goes best with an cup of coffee another cup. The most dangerous drinks game is seeing how long I can go without coffee."
-                               FontFamily="JosefinSans-Regular"/>
+                        <Label LineHeight="1.5" Text="Humanity runs on coffee but even a bad cup of coffee is better than no coffee at all. What goes best with an cup of coffee another cup. The most dangerous drinks game is seeing how long I can go without coffee."
+                               FontFamily="JosefinSans-Regular" FontSize="16"/>
                     </StackLayout>
                 </ScrollView>
             </Grid>
+            <customViews:BottomControl Grid.Row="2" ArcColor="{StaticResource CWhite}" BackgroundColor="{StaticResource CGreen}"
+                LeftBtnBackgroundColor="{StaticResource CGreen}" LeftBtnTextColor="{StaticResource CWhite}" LeftBtnIconText="{Static icoMoon:IcoMoonFont.CoffeeBeans}"
+                CenterBtnBackgroundColor="{StaticResource CWhite}" CenterBtnTextColor="{StaticResource CGreen}" CenterBtnIconText="{Static icoMoon:IcoMoonFont.AddShoppingCart}"
+                RightBtnBackgroundColor="{StaticResource CGreen}" RightBtnTextColor="{StaticResource CWhite}" RightBtnIconText="{Static icoMoon:IcoMoonFont.CoffeeCup}" />
         </Grid>
 
     </ContentPage.Content>

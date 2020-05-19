@@ -30,7 +30,7 @@
                    FontFamily="JosefinSans-Bold" FontSize="32"
                    VerticalOptions="Center" TextColor="{StaticResource CWhite}"/>
             <Button Grid.Column="1" Margin="0,0,32,0" Padding="0"
-                    FontFamily="IcoMoonFont" Text="{Static icoMoon:IcoMoonFont.ShoppingBasket}" FontSize="38"
+                    FontFamily="IcoMoonFont" Text="{Static icoMoon:IcoMoonFont.ShoppingCart}" FontSize="38"
                     TextColor="{StaticResource CGreen}"
                     BackgroundColor="{StaticResource CWhite}" VerticalOptions="Center" HeightRequest="56" WidthRequest="56" CornerRadius="12" />
             <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="{StaticResource CGreen}"
@@ -101,7 +101,7 @@
             </Label>
             <customViews:BottomControl Grid.Row="3" Grid.ColumnSpan="2" BackgroundColor="{StaticResource CWhite}" ArcColor="{StaticResource CGreen}"
                                        LeftBtnBackgroundColor="{StaticResource CWhite}" LeftBtnTextColor="{StaticResource CGreen}" LeftBtnIconText="{Static icoMoon:IcoMoonFont.CoffeeBeans}"
-                                       CenterBtnBackgroundColor="{StaticResource CWhite}" CenterBtnTextColor="{StaticResource CGreen}" CenterBtnIconText="{Static icoMoon:IcoMoonFont.ShoppingBagSale}"
+                                       CenterBtnBackgroundColor="{StaticResource CWhite}" CenterBtnTextColor="{StaticResource CGreen}" CenterBtnIconText="{Static icoMoon:IcoMoonFont.Sale}"
                                        RightBtnBackgroundColor="{StaticResource CWhite}" RightBtnTextColor="{StaticResource CGreen}" RightBtnIconText="{Static icoMoon:IcoMoonFont.CoffeeCup}" />
         </Grid>
     </ContentPage.Content>

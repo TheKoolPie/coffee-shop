@@ -11,7 +11,7 @@ namespace CoffeeShop
         {
             InitializeComponent();
 
-            MainPage = new ProductOverviewView();
+            MainPage = new ProductDetailView();
         }
 
         protected override void OnStart()
