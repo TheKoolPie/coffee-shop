@@ -1,11 +1,13 @@
 ﻿using CoffeeShop.Models;
+using CoffeeShop.ViewModels.TransferData;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace CoffeeShop.ViewModels.Products
+namespace CoffeeShop.ViewModels
 {
     public class ProductDetailViewModel : CoffeeShopBaseViewModel
     {
@@ -36,6 +38,18 @@ namespace CoffeeShop.ViewModels.Products
                 });
             }
         }
+
+        public override Task InitializeAsync(object navigationData)
+        {
+            if (navigationData != null)
+            {
+                var data = (ProductDetailNavData)navigationData;
+                Product = data.Product;
+                Quantity = data.Quantity;
+            }
+            return Task.FromResult(false);
+        }
+
         private void AddToBasket()
         {
             BasketService.AddToBasket(Product.Id, Quantity);

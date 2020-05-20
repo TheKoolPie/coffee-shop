@@ -32,7 +32,7 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="2*" />
                 </Grid.RowDefinitions>
-                <Label Text="Broadcast Coffee" TextColor="{StaticResource CGreen}"
+                <Label Text="{Binding Product.Title}" TextColor="{StaticResource CGreen}"
                        Grid.Row="0" Margin="36,0,0,0"
                        FontFamily="JosefinSans-Bold" FontSize="32" LineHeight="1.5"/>
                 <Label Text="{Binding Product.SubTitle}"

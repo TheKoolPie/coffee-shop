@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Windows.Input;
 using CoffeeShop.Models;
+using CoffeeShop.ViewModels.TransferData;
 using Xamarin.Forms;
 
-namespace CoffeeShop.ViewModels.Products
+namespace CoffeeShop.ViewModels
 {
     public class ProductSelectViewModel : CoffeeShopBaseViewModel
     {
@@ -22,6 +23,21 @@ namespace CoffeeShop.ViewModels.Products
             set => SetProperty(ref _quantity, value);
         }
 
+        public ICommand SelectProductCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    var navData = new ProductDetailNavData
+                    {
+                        Product = this.Product,
+                        Quantity = this.Quantity
+                    };
+                    await NavigationService.PushAsync<ProductDetailViewModel>(navData);
+                });
+            }
+        }
         public ICommand AddToBasketCommand 
         {
             get

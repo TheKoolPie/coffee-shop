@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using CoffeeShop.ViewModels.Products;
+using CoffeeShop.ViewModels;
 using MvvmHelpers;
 using System.Linq;
 using Xamarin.Forms;

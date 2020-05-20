@@ -63,7 +63,11 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <Image Source="{Binding Product.Image}" />
+                                <Image Source="{Binding Product.Image}">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding SelectProductCommand}" NumberOfTapsRequired="1" />
+                                    </Image.GestureRecognizers>
+                                </Image>
                                 <Grid Grid.Row="1" Padding="25" RowSpacing="20">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="*" />

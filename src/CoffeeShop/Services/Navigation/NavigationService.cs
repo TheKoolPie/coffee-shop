@@ -47,7 +47,7 @@ namespace CoffeeShop.Services
 
         public Task InitializeAsync()
         {
-            Application.Current.MainPage = CreatePage(typeof(ProductOverviewViewModel), null);
+            Application.Current.MainPage = new NavigationPage(CreatePage(typeof(ProductOverviewViewModel), null));
 
             return Task.FromResult(false);
         }
@@ -57,7 +57,7 @@ namespace CoffeeShop.Services
         {
             Page page = CreatePage(typeof(TViewModel), null);
 
-            await FormsNavigation.PushAsync((Page)page);
+            await FormsNavigation.PushAsync(page);
         }
         public async Task PushAsync<TViewModel>(object parameter) where TViewModel : CoffeeShopBaseViewModel
         {
