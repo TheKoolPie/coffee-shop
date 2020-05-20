@@ -1,28 +1,29 @@
-﻿using System;
+﻿using CoffeeShop.Models;
+using System;
+using System.Collections.Generic;
+using System.Text;
 using System.Windows.Input;
-using CoffeeShop.Models;
 using Xamarin.Forms;
 
 namespace CoffeeShop.ViewModels.Products
 {
-    public class ProductSelectViewModel : CoffeeShopBaseViewModel
+    public class ProductDetailViewModel : CoffeeShopBaseViewModel
     {
-
         Product _product;
-        public Product Product 
-        { 
-            get => _product; 
-            set => SetProperty(ref _product, value); 
+        public Product Product
+        {
+            get => _product;
+            set => SetProperty(ref _product, value);
         }
 
         int _quantity;
-        public int Quantity 
-        { 
-            get => _quantity; 
+        public int Quantity
+        {
+            get => _quantity;
             set => SetProperty(ref _quantity, value);
         }
 
-        public ICommand AddToBasketCommand 
+        public ICommand AddToBasketCommand
         {
             get
             {
@@ -35,20 +36,10 @@ namespace CoffeeShop.ViewModels.Products
                 });
             }
         }
-
-        public ProductSelectViewModel()
-        {
-            Quantity = 1;
-        }
-        public ProductSelectViewModel(Product bag) : this()
-        {
-            Product = bag;
-        }
-
         private void AddToBasket()
         {
             BasketService.AddToBasket(Product.Id, Quantity);
-            MessagingCenter.Send<ProductSelectViewModel, int>(this, "AddItemToBasket", Quantity);
+            MessagingCenter.Send<ProductDetailViewModel, int>(this, "AddItemToBasket", Quantity);
         }
         private bool CanOperate()
         {

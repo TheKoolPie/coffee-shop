@@ -1,20 +1,31 @@
 ﻿using System;
+using System.Threading.Tasks;
 using CoffeeShop.Models;
 using CoffeeShop.Services;
+using CoffeeShop.ViewModels.Base;
 using MvvmHelpers;
 
 namespace CoffeeShop.ViewModels
 {
     public class CoffeeShopBaseViewModel : BaseViewModel
     {
-        private Basket _basket;
-        public readonly IBasketService BasketService;
-        public readonly IProductRepository ProductRepository;
+        protected IBasketService BasketService { get; private set; }
+        protected IProductRepository ProductRepository { get; private set; }
+        protected INavigationService NavigationService { get; private set; }
+        protected IDisplayAlertService DisplayAlertService { get; private set; }
+
         public CoffeeShopBaseViewModel()
         {
-            _basket = new Basket();
-            ProductRepository = new ProductRepository();
-            BasketService = new BasketService(_basket, ProductRepository);
+            BasketService = ViewModelLocator.Resolve<IBasketService>();
+            ProductRepository = ViewModelLocator.Resolve<IProductRepository>();
+            NavigationService = ViewModelLocator.Resolve<INavigationService>();
+            DisplayAlertService = ViewModelLocator.Resolve<IDisplayAlertService>();
+
+        }
+
+        public virtual Task InitializeAsync(object navigationData)
+        {
+            return Task.FromResult(false);
         }
     }
 }

@@ -7,36 +7,39 @@ namespace CoffeeShop.CustomViews
 {
     public partial class Stepper : ContentView
     {
-        public static readonly BindableProperty QuantityDecreaseCommandProperty =
-            BindableProperty.Create("QuantityDecreaseCommand", typeof(ICommand),typeof(Stepper), null);
-
-        public ICommand QuantityDecreaseCommand
-        {
-            get { return (ICommand)GetValue(QuantityDecreaseCommandProperty); }
-            set { SetValue(QuantityDecreaseCommandProperty, value); }
-        }
-
-        public static readonly BindableProperty QuantityIncreaseCommandProperty =
-            BindableProperty.Create("QuantityIncreaseCommand", typeof(ICommand), typeof(Stepper), null);
-
-        public ICommand QuantityIncreaseCommand
-        {
-            get { return (ICommand)GetValue(QuantityIncreaseCommandProperty); }
-            set { SetValue(QuantityIncreaseCommandProperty, value); }
-        }
-
         public static readonly BindableProperty QuantityProperty =
-            BindableProperty.Create("Quantity", typeof(int),typeof(Stepper), null);
+            BindableProperty.Create("Quantity", typeof(int), typeof(Stepper), null, BindingMode.TwoWay, null, HandleQuantityPropertyChanged);
+
+        private static void HandleQuantityPropertyChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            Console.Write(bindable);
+        }
 
         public int Quantity
         {
-            get { return (int)GetValue(QuantityProperty);}
-            set { SetValue(QuantityProperty, value); }
+            get { return (int)GetValue(QuantityProperty); }
+            set
+            {
+                int newValue = value;
+                BtnDecrease.IsEnabled = newValue > 0;
+                SetValue(QuantityProperty, newValue);
+            }
         }
 
         public Stepper()
         {
             InitializeComponent();
         }
+
+        private void IncreaseQuantity(object sender, EventArgs e)
+        {
+            Quantity++;
+        }
+        private void DecreaseQuantity(object sender, EventArgs e)
+        {
+            Quantity--;
+        }
+
+
     }
 }

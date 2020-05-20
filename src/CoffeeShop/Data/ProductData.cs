@@ -18,6 +18,8 @@ namespace CoffeeShop.Data
             {
                 Id="002",
                 Title="Broadcast Coffee",
+                SubTitle="The name of the company is based on the movie",
+                Description="Humanity runs on coffee but even a bad cup of coffee is better than no coffee at all. What goes best with an cup of coffee another cup. The most dangerous drinks game is seeing how long I can go without coffee.",
                 Price=104
             },
             new Product

@@ -5,7 +5,11 @@
     x:Class="CoffeeShop.Views.ProductOverviewView"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     ios:Page.UseSafeArea="True"
+    NavigationPage.HasBackButton="False"
+    NavigationPage.HasNavigationBar="False"
     xmlns:icoMoon="clr-namespace:CoffeeShop.FontHelper"
+    xmlns:vmBase="clr-namespace:CoffeeShop.ViewModels.Base"
+    vmBase:ViewModelLocator.AutoWireViewModel="True"
     xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
     BackgroundColor="{StaticResource CGreen}"
     xmlns:customViews="clr-namespace:CoffeeShop.CustomViews"
@@ -77,14 +81,12 @@
                                       FontFamily="JosefinSans-Bold" FontSize="28" TextColor="{StaticResource CGreen}"
                                       Text="{Binding Product.Price, StringFormat='{0:C}'}" />
                                     <customViews:Stepper Grid.Row="1" Grid.Column="1"
-                                                         Quantity="{Binding Quantity}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
-                                                         QuantityIncreaseCommand="{Binding QuantityIncreaseCommand}"
-                                                         QuantityDecreaseCommand="{Binding QuantityDecreaseCommand}" />
+                                                         Quantity="{Binding Quantity}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  />
                                     <Button Grid.Row="2" Grid.ColumnSpan="2" CornerRadius="8" BackgroundColor="{StaticResource CBrown}"
                                         FontFamily="JosefinSans-Regular" Text="Add To Cart" TextColor="{StaticResource CWhite}" FontSize="20" 
                                         Command="{Binding AddToBasketCommand}" />
                                 </Grid>
-                                
+
                             </Grid>
                         </Frame>
                     </DataTemplate>

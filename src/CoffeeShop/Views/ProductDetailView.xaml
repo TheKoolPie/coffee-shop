@@ -3,6 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CoffeeShop.Views.ProductDetailView"
              xmlns:customViews="clr-namespace:CoffeeShop.CustomViews"
+             xmlns:vmBase="clr-namespace:CoffeeShop.ViewModels.Base"
+             vmBase:ViewModelLocator.AutoWireViewModel="True"
+             NavigationPage.HasBackButton="False"
+             NavigationPage.HasNavigationBar="False"
              xmlns:icoMoon="clr-namespace:CoffeeShop.FontHelper"
              xmlns:pan="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              BackgroundColor="{StaticResource CWhite}">
@@ -14,7 +18,7 @@
                 <RowDefinition Height="100" />
             </Grid.RowDefinitions>
             <pan:PancakeView Grid.Row="0" CornerRadius="0,0,40,40" BackgroundColor="{StaticResource CGreen}">
-                
+
             </pan:PancakeView>
             <Button Grid.Row="0" BackgroundColor="{StaticResource CWhite}"
                     Margin="32,48,0,0" CornerRadius="10" FontSize="28" Padding="10,0,0,0"
@@ -31,7 +35,7 @@
                 <Label Text="Broadcast Coffee" TextColor="{StaticResource CGreen}"
                        Grid.Row="0" Margin="36,0,0,0"
                        FontFamily="JosefinSans-Bold" FontSize="32" LineHeight="1.5"/>
-                <Label Text="The name of the company is based on the movie"
+                <Label Text="{Binding Product.SubTitle}"
                        Margin="36,0,0,0"
                        Grid.Row="1" TextColor="{StaticResource CBeige}"
                        FontFamily="JosefinSans-Regular" FontSize="16"/>
@@ -40,14 +44,14 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                <Label Text="$104" FontFamily="JosefinSans-Bold" FontSize="38"
+                    <Label Text="{Binding Product.Price, StringFormat='{0:C}'}"  FontFamily="JosefinSans-Bold" FontSize="38"
                        Margin="36,0" VerticalOptions="Center"
                        TextColor="{StaticResource CGreen}" />
-                 <customViews:Stepper Grid.Column="1" Margin="0,0,36,0"/>
+                    <customViews:Stepper Grid.Column="1" Margin="0,0,36,0" Quantity="{Binding Quantity}" />
                 </Grid>
                 <ScrollView Grid.Row="3" Margin="36,0">
                     <StackLayout>
-                        <Label LineHeight="1.5" Text="Humanity runs on coffee but even a bad cup of coffee is better than no coffee at all. What goes best with an cup of coffee another cup. The most dangerous drinks game is seeing how long I can go without coffee."
+                        <Label LineHeight="1.5" Text="{Binding Product.Description}"
                                FontFamily="JosefinSans-Regular" FontSize="16" TextColor="Black"/>
                     </StackLayout>
                 </ScrollView>

@@ -5,29 +5,28 @@ namespace CoffeeShop.Services
 {
     public class BasketService : IBasketService
     {
-        private Basket _basket;
         private readonly IProductRepository _products;
-        
-        public BasketService(Basket basket, IProductRepository productRepository)
+
+        public BasketService(IProductRepository productRepository)
         {
-            _basket = basket;
+            Basket = new Basket();
             _products = productRepository;
         }
 
-        public Basket Basket { get => _basket; }
+        public Basket Basket { get; set; }
 
         public async void AddToBasket(string productId, int quantity)
         {
             var product = await _products.GetProductByIdAsync(productId) ?? throw new Exception($"No Product with Id {productId} found in sortiment");
 
-            var productInBasket = _basket[productId];
+            var productInBasket = Basket[productId];
             if (productInBasket == null)
             {
-                _basket.Products.Add(product, quantity);
+                Basket.Products.Add(product, quantity);
             }
             else
             {
-                _basket.Products[product] = _basket.Products[product] + quantity;
+                Basket.Products[product] = Basket.Products[product] + quantity;
             }
         }
 
